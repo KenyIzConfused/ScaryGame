@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://c63lalhecokjp"]
+
+[ext_resource type="Texture2D" uid="uid://2h3t5t8y3cye" path="res://Assets/NightSkyHDRI003_1K/NightSkyHDRI003_1K_HDR.exr" id="1_mescp"]
+[ext_resource type="Texture2D" uid="uid://bool7mpma53j" path="res://Assets/grass.jpg" id="1_v6bv3"]
+[ext_resource type="Texture2D" uid="uid://bu6r066rn1nyi" path="res://Assets/gravelroad2.jpg" id="2_mescp"]
+[ext_resource type="ArrayMesh" uid="uid://b1i1v4jmwdruw" path="res://Assets/punongmundo/Tree Pack 3D/1/Tree 1.obj" id="3_wu14e"]
+[ext_resource type="ArrayMesh" uid="uid://bpxf37rsffdqo" path="res://Assets/punongmundo/Tree Pack 3D/5/Tree 5.obj" id="4_cu8mb"]
+[ext_resource type="PackedScene" uid="uid://srpgdqaars8f" path="res://Scenes/cite_building.tscn" id="5_la86w"]
+[ext_resource type="AudioStream" uid="uid://dccdbixlkjyyd" path="res://Assets/Wind Sound SOUND EFFECT - No Copyright[Download Free].mp3" id="7_wu14e"]
+[ext_resource type="Texture2D" uid="uid://cmugcxuae1e0" path="res://Assets/gameLogo.png" id="8_cu8mb"]
+[ext_resource type="AudioStream" uid="uid://ckn8ih3mpex0" path="res://Assets/Owl Sound Effects.mp3" id="8_la86w"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v6bv3"]
+panorama = ExtResource("1_mescp")
+
+[sub_resource type="Sky" id="Sky_mescp"]
+sky_material = SubResource("PanoramaSkyMaterial_v6bv3")
+
+[sub_resource type="Environment" id="Environment_wu14e"]
+background_mode = 2
+sky = SubResource("Sky_mescp")
+sky_rotation = Vector3(0.30717796, 3.3161256, 0)
+ambient_light_color = Color(1, 1, 1, 1)
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.21944317, 0.4147543, 0.57808656, 1)
+fog_density = 0.05
+fog_sky_affect = 0.505
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ua51b"]
+albedo_texture = ExtResource("1_v6bv3")
+uv1_scale = Vector3(6, 7, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ojpv"]
+albedo_texture = ExtResource("2_mescp")
+uv1_scale = Vector3(3, 1, 2)
+
+[node name="StartUpMenu" type="Node3D" unique_id=277024311]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2036422446]
+environment = SubResource("Environment_wu14e")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1090414430]
+transform = Transform3D(0.29070225, -0.9568136, -1.4999454e-08, 0.92125684, 0.27989924, 0.27007854, -0.2584148, -0.078512445, 0.96283835, 0, 3.9181705, 0)
+light_color = Color(0.74509805, 1, 1, 1)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1107264065]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=770825885]
+size = Vector3(50, 0.2, 20)
+material = SubResource("StandardMaterial3D_ua51b")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1282650846]
+size = Vector3(4, 1, 20)
+material = SubResource("StandardMaterial3D_0ojpv")
+
+[node name="Tree1" type="MeshInstance3D" parent="CSGCombiner3D" unique_id=1409349064]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.01093, 0, -0.28173065)
+mesh = ExtResource("3_wu14e")
+
+[node name="Tree5" type="MeshInstance3D" parent="CSGCombiner3D" unique_id=396715412]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -3.038103, 0, 2.6967)
+mesh = ExtResource("4_cu8mb")
+
+[node name="CITEBuilding" parent="." unique_id=915694806 instance=ExtResource("5_la86w")]
+transform = Transform3D(-0.27811447, 0, -0.41551456, 0, 0.5, 0, 0.41551456, 0, -0.27811447, 15.481655, 0.16949916, -9.453863)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=219931238]
+transform = Transform3D(0.96469843, 0, 0.26335704, 0, 1, 0, -0.26335704, 0, 0.96469843, 1.8384144, 2.798393, 11.208909)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1836783496]
+stream = ExtResource("7_wu14e")
+autoplay = true
+parameters/looping = true
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="." unique_id=970817580]
+stream = ExtResource("8_la86w")
+volume_db = -3.0
+max_db = 0.005
+autoplay = true
+parameters/looping = true
+
+[node name="Control" type="Control" parent="." unique_id=1871921123]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=966157424]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.5
+offset_top = -97.0
+offset_right = 97.5
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_cu8mb")
+expand_mode = 1
+stretch_mode = 4
