@@ -12,12 +12,14 @@ config_version=5
 
 config/name="ScaryGame"
 config/features=PackedStringArray("4.7", "Forward Plus")
+boot_splash/image="uid://cmugcxuae1e0"
 config/icon="uid://cmugcxuae1e0"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 
 [filesystem]
 

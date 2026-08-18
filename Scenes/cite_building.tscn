@@ -446,7 +446,7 @@ material = SubResource("StandardMaterial3D_v0s4m")
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="Building" unique_id=1988794720]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5348947, 9.042881, 0)
-size = Vector3(0.2, 18.072266, 30)
+size = Vector3(0.002, 18.072, 30)
 
 [node name="CSGBox3D49" type="CSGBox3D" parent="Building" unique_id=205509119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.310629, 9.042881, 0)
