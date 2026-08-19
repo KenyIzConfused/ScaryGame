@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c63lalhecokjp"]
 
+[ext_resource type="Script" uid="uid://k1lw1d8hh5tm" path="res://Scripts/start_up_menu.gd" id="1_0ojpv"]
 [ext_resource type="Texture2D" uid="uid://2h3t5t8y3cye" path="res://Assets/NightSkyHDRI003_1K/NightSkyHDRI003_1K_HDR.exr" id="1_mescp"]
 [ext_resource type="Texture2D" uid="uid://bool7mpma53j" path="res://Assets/grass.jpg" id="1_v6bv3"]
 [ext_resource type="Texture2D" uid="uid://bu6r066rn1nyi" path="res://Assets/gravelroad2.jpg" id="2_mescp"]
@@ -62,6 +63,7 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_size = 5
 
 [node name="StartUpMenu" type="Node3D" unique_id=277024311]
+script = ExtResource("1_0ojpv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2036422446]
 environment = SubResource("Environment_wu14e")
@@ -549,3 +551,8 @@ text = "QUIT"
 
 [node name="bangan hills" parent="." unique_id=1050616428 instance=ExtResource("9_la86w")]
 transform = Transform3D(-5.538869, 0, -4.2802954, 0, 7, 0, 4.2802954, 0, -5.538869, -68.15111, -30.41657, -86.16446)
+
+[connection signal="pressed" from="Control/VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/TutorialBtn" to="." method="_on_tutorial_btn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/SettingBtn" to="." method="_on_setting_btn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
