@@ -38,18 +38,18 @@ shape = SubResource("BoxShape3D_ql73s")
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1115219509]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2642001, 0)
 target_position = Vector3(0, 0, 5)
-collision_mask = 2
+collision_mask = 15
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=619135137]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.440674)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 13.440674)
 
 [node name="Marker3D2" type="Marker3D" parent="." unique_id=577273473]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.701333, 0, 13.440674)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.701333, 0, 13.440674)
 
 [node name="Marker3D3" type="Marker3D" parent="." unique_id=979393138]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.701333, 0, -0.089099884)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -6.701333, 0, -0.089099884)
 
 [node name="Marker3D4" type="Marker3D" parent="." unique_id=1853147006]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14719963, 0, -0.089099884)
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0.14719963, 0, -0.089099884)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

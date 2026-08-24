@@ -40,9 +40,9 @@ grow_horizontal = 2
 
 [node name="Label" type="Label" parent="Control" unique_id=2066053940]
 layout_mode = 0
-offset_left = -63.0
+offset_left = -141.0
 offset_top = 16.0
-offset_right = 69.0
+offset_right = 174.0
 offset_bottom = 85.0
 theme_override_font_sizes/font_size = 50
 text = "Time: {timer}"

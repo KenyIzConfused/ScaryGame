@@ -27,8 +27,8 @@ points = PackedVector3Array(-0.5, -1.0375977, -0.03656006, -0.5, -1.0375977, 0.0
 size = Vector3(1.1885986, 2.3305664, 1.4599609)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ql73s"]
-vertices = PackedVector3Array(-24.258896, 0.5839844, -24.236921, -24.258896, 0.5839844, 24.013079, 23.241104, 0.5839844, 24.013079, 23.241104, 0.5839844, -24.236921)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+vertices = PackedVector3Array(-24.258896, 0.5839844, -0.23692131, -6.758896, 0.5839844, -0.23692131, -6.508896, 0.5839844, -1.2369213, -4.508896, 0.5839844, -24.236921, -24.258896, 0.5839844, -24.236921, -4.508896, 0.5839844, -1.2369213, -2.2588959, 0.5839844, -1.2369213, -2.2588959, 0.5839844, -24.236921, -0.25889587, 0.5839844, -1.2369213, -0.008895874, 0.5839844, -0.23692131, 23.241104, 0.5839844, -0.23692131, 23.241104, 0.5839844, -24.236921, -6.508896, 0.5839844, 1.0130787, -24.258896, 0.5839844, 24.013079, -4.508896, 0.5839844, 24.013079, -4.508896, 0.5839844, 1.0130787, -0.25889587, 0.5839844, 1.0130787, -2.2588959, 0.5839844, 1.0130787, -2.2588959, 0.5839844, 24.013079, 23.241104, 0.5839844, 24.013079)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(3, 5, 2), PackedInt32Array(3, 7, 5), PackedInt32Array(5, 7, 6), PackedInt32Array(8, 6, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(11, 8, 7), PackedInt32Array(1, 12, 0), PackedInt32Array(0, 12, 13), PackedInt32Array(13, 12, 14), PackedInt32Array(12, 15, 14), PackedInt32Array(18, 17, 16), PackedInt32Array(9, 10, 16), PackedInt32Array(16, 10, 19), PackedInt32Array(16, 19, 18), PackedInt32Array(15, 17, 14), PackedInt32Array(14, 17, 18)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8nu6"]
 albedo_texture = ExtResource("1_jmr45")
@@ -36,6 +36,9 @@ albedo_texture = ExtResource("1_jmr45")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_addnb"]
 albedo_texture = ExtResource("1_jmr45")
 uv1_scale = Vector3(7, 6, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ql73s"]
+albedo_color = Color(0.5104432, 0.32338113, 0, 1)
 
 [node name="TutorialLevel" type="Node3D" unique_id=760453345]
 script = ExtResource("1_k8hhx")
@@ -51,7 +54,7 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.315073, 0.14563477, 20.995802)
 
 [node name="door" type="Area3D" parent="." unique_id=865878510]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20726556, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20726556, 0.51062834)
 collision_layer = 4
 collision_mask = 2
 
@@ -99,6 +102,11 @@ size = Vector3(50, 50, 1)
 [node name="wall4" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=537269879]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 24.48842, 18.117884, -0.16996193)
 size = Vector3(50, 38.505737, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=96367179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3538485, 1.1086826, 0)
+size = Vector3(5.6804504, 2.107605, 1)
+material = SubResource("StandardMaterial3D_ql73s")
 
 [node name="Enemy" parent="." unique_id=4575477 instance=ExtResource("4_7t4b2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.393134, 0.41746044, -14.575631)
