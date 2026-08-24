@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://dhlvigvyerim8"
+path="res://.godot/imported/Interact.dialogue-6d98056ebdce8a31edb77e40224bff24.tres"
+
+[deps]
+
+source_file="res://dialogues/Interact.dialogue"
+dest_files=["res://.godot/imported/Interact.dialogue-6d98056ebdce8a31edb77e40224bff24.tres"]
+
+[params]
+
+defaults=true

@@ -3,6 +3,11 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const TURN_SPEED = 12.0
+const TOTAL_TIME = 300.0
+
+@onready var timer_label: Label = $Control/Label
+
+var time_left := TOTAL_TIME
 
 var orbit_camera: Camera3D
 var orbiting := false
@@ -16,6 +21,27 @@ func _ready() -> void:
 	if orbit_camera:
 		orbit_yaw = orbit_camera.rotation.y
 		orbit_pitch = orbit_camera.rotation.x
+
+
+func _process(delta: float) -> void:
+	if time_left > 0:
+		time_left -= delta
+		time_left = max(time_left, 0)
+		update_timer_label()
+		
+		if time_left <= 0:
+			game_over()
+
+
+func update_timer_label() -> void:
+	if timer_label:
+		var minutes := int(time_left / 60)
+		var seconds := int(time_left) % 60
+		timer_label.text = "Time: %02d:%02d" % [minutes, seconds]
+
+
+func game_over() -> void:
+	get_tree().quit()
 
 
 func _input(event: InputEvent) -> void:

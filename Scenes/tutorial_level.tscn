@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dixhvf8d0jkjk"]
 
 [ext_resource type="Texture2D" uid="uid://bool7mpma53j" path="res://Assets/grass.jpg" id="1_jmr45"]
-[ext_resource type="Script" uid="uid://d1lj3dvd56gbk" path="res://Scenes/tutorial_level.gd" id="1_k8hhx"]
+[ext_resource type="Script" uid="uid://d1lj3dvd56gbk" path="res://Scripts/tutorial_level.gd" id="1_k8hhx"]
 [ext_resource type="PackedScene" uid="uid://6sf334r6ogqb" path="res://Scenes/player.tscn" id="2_o8ev7"]
+[ext_resource type="PackedScene" uid="uid://cdg1l3gxqex0q" path="res://Scenes/enemy.tscn" id="4_7t4b2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o8ev7"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -16,18 +17,25 @@ background_mode = 2
 sky = SubResource("Sky_k8hhx")
 glow_enabled = true
 
+[sub_resource type="BoxMesh" id="BoxMesh_ql73s"]
+size = Vector3(1, 2.0751953, 0.07312012)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7t4b2"]
+points = PackedVector3Array(-0.5, -1.0375977, -0.03656006, -0.5, -1.0375977, 0.03656006, -0.5, 1.0375977, -0.03656006, 0.5, -1.0375977, -0.03656006, 0.5, -1.0375977, 0.03656006, -0.5, 1.0375977, 0.03656006, 0.5, 1.0375977, -0.03656006, 0.5, 1.0375977, 0.03656006)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ql73s"]
+size = Vector3(1.1885986, 2.3305664, 1.4599609)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ql73s"]
+vertices = PackedVector3Array(-24.258896, 0.5839844, -24.236921, -24.258896, 0.5839844, 24.013079, 23.241104, 0.5839844, 24.013079, 23.241104, 0.5839844, -24.236921)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8nu6"]
 albedo_texture = ExtResource("1_jmr45")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_addnb"]
 albedo_texture = ExtResource("1_jmr45")
 uv1_scale = Vector3(7, 6, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ql73s"]
-size = Vector3(1.1885986, 2.3305664, 1.4599609)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ql73s"]
-size = Vector3(1, 2.0751953, 0.07312012)
 
 [node name="TutorialLevel" type="Node3D" unique_id=760453345]
 script = ExtResource("1_k8hhx")
@@ -39,42 +47,61 @@ environment = SubResource("Environment_7t4b2")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1418801178]
-use_collision = true
-
-[node name="floor" type="CSGBox3D" parent="CSGCombiner3D" unique_id=767674635]
-material_override = SubResource("StandardMaterial3D_b8nu6")
-size = Vector3(50, 0.2, 50)
-material = SubResource("StandardMaterial3D_addnb")
-
-[node name="wall" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1346965103]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.541992, -25.486921)
-size = Vector3(50, 26.916016, 1)
-
-[node name="wall2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=894207289]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.77525, 25.136969)
-size = Vector3(50, 50, 1)
-
-[node name="wall3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=986052130]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25.508894, 23.865015, -0.16996193)
-size = Vector3(50, 50, 1)
-
-[node name="wall4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=537269879]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 24.48842, 18.117884, -0.16996193)
-size = Vector3(50, 38.505737, 1)
-
 [node name="player" parent="." unique_id=283453804 instance=ExtResource("2_o8ev7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.315073, 0.14563477, 20.995802)
 
 [node name="door" type="Area3D" parent="." unique_id=865878510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20726556, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="door" unique_id=50200346]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09429932, 0.6652832, 0.012463093)
-shape = SubResource("BoxShape3D_ql73s")
+collision_layer = 4
+collision_mask = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="door" unique_id=385998633]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8878091, -0.03131473)
 mesh = SubResource("BoxMesh_ql73s")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="door/MeshInstance3D" unique_id=180830193]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door/MeshInstance3D/StaticBody3D" unique_id=1268800756]
+shape = SubResource("ConvexPolygonShape3D_7t4b2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door" unique_id=50200346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09429932, 0.6652832, 0.012463093)
+shape = SubResource("BoxShape3D_ql73s")
+
+[node name="Interact" type="Label3D" parent="door" unique_id=72541582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2121606, 0.28575853)
+text = "Press \"E\" to Interact"
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=2029076323]
+navigation_mesh = SubResource("NavigationMesh_ql73s")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D" unique_id=1418801178]
+use_collision = true
+
+[node name="floor" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=767674635]
+material_override = SubResource("StandardMaterial3D_b8nu6")
+size = Vector3(50, 0.2, 50)
+material = SubResource("StandardMaterial3D_addnb")
+
+[node name="wall" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1346965103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.541992, -25.486921)
+size = Vector3(50, 26.916016, 1)
+
+[node name="wall2" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=894207289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.77525, 25.136969)
+size = Vector3(50, 50, 1)
+
+[node name="wall3" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=986052130]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25.508894, 23.865015, -0.16996193)
+size = Vector3(50, 50, 1)
+
+[node name="wall4" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=537269879]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 24.48842, 18.117884, -0.16996193)
+size = Vector3(50, 38.505737, 1)
+
+[node name="Enemy" parent="." unique_id=4575477 instance=ExtResource("4_7t4b2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.393134, 0.41746044, -14.575631)
+
 [connection signal="body_entered" from="door" to="." method="_on_door_body_entered"]
+[connection signal="body_exited" from="door" to="." method="_on_door_body_exited"]

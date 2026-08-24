@@ -6,8 +6,9 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ql73s"]
 
-[node name="player" type="CharacterBody3D" unique_id=283453804]
+[node name="player" type="CharacterBody3D" unique_id=283453804 groups=["player"]]
 collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_v0iea")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1619813374]
@@ -26,3 +27,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.20031857, 0.12247141)
 
 [node name="Camera3D" type="Camera3D" parent="head/SpringArm3D" unique_id=671013433]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11780906, 0.19812775)
+
+[node name="Control" type="Control" parent="." unique_id=128750608]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Control" unique_id=2066053940]
+layout_mode = 0
+offset_left = -63.0
+offset_top = 16.0
+offset_right = 69.0
+offset_bottom = 85.0
+theme_override_font_sizes/font_size = 50
+text = "Time: {timer}"
