@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bvyr8h8hgp36m"]
+
+[ext_resource type="Script" uid="uid://imj0v3iosdhb" path="res://Scripts/lever.gd" id="1_wv1st"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ql73s"]
+size = Vector3(0.2, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ql73s"]
+radius = 1.3602129
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ql73s"]
+top_radius = 0.04345703
+bottom_radius = 0.04345703
+height = 0.53375244
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oeq8l"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdhfp"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="FuseBox" type="Area3D" unique_id=937499108]
+collision_mask = 2
+script = ExtResource("1_wv1st")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1613069630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5130648, 0)
+mesh = SubResource("BoxMesh_ql73s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=224890810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48890603, 0)
+shape = SubResource("SphereShape3D_ql73s")
+
+[node name="Lever" type="MultiMeshInstance3D" parent="." unique_id=2058447408]
+
+[node name="lever" type="MeshInstance3D" parent="Lever" unique_id=538803415]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.4247961, 0.72800255, -0.016048312)
+mesh = SubResource("CylinderMesh_ql73s")
+surface_material_override/0 = SubResource("StandardMaterial3D_oeq8l")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Lever" unique_id=212799209]
+transform = Transform3D(0.61447567, 0.7889358, 0, -0.7889358, 0.61447567, 0, 0, 0, 1, 0.24597642, 0.5909959, -0.29471308)
+mesh = SubResource("CylinderMesh_ql73s")
+surface_material_override/0 = SubResource("StandardMaterial3D_sdhfp")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Lever" unique_id=449719004]
+transform = Transform3D(0.61447567, 0.7889358, 0, -0.7889358, 0.61447567, 0, 0, 0, 1, 0.24597642, 0.5909959, 0.2775836)
+mesh = SubResource("CylinderMesh_ql73s")
+surface_material_override/0 = SubResource("StandardMaterial3D_sdhfp")
+
+[node name="ONlabel" type="Label3D" parent="." unique_id=2031317529]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.13967717, 0.9197422, 0)
+text = "ON"
+
+[node name="OFFlabel" type="Label3D" parent="." unique_id=589725875]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.13967717, 0.15473771, 0)
+text = "OFF"
